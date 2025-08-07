@@ -1,0 +1,41 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#root {
+    height: 100vh;
+}
+
+.drawer {
+    width: 500px !important;
+}
+
+.button {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: crimson;
+    border: none;
+    color: white;
+    width: 40px;
+    cursor: pointer;
+}
+
+.tutar {
+    text-align: center;
+    font-weight: bold;
+}
