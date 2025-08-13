@@ -1,0 +1,168 @@
+/* Search.css */
+.search-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.search-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.search-product-card {
+    width: 230px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-product-card:hover {
+    box-shadow: 1px 4px 3px rgb(233, 71, 71);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.search-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.search-product-info {
+    width: 230px;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-product-title {
+    text-align: center;
+    height: 50px;
+    margin: 10px 0;
+}
+
+.search-product-price {
+    font-family: 'Poppins', sans-serif;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-product-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+.inspect-button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: lightcoral;
+    color: white;
+    padding: 8px 15px;
+    width: 10em;
+    margin-top: 10px;
+}
+
+.inspect-button:hover {
+    cursor: pointer;
+    background-color: rgb(233, 71, 71);
+    transition: all 0.5s;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+}
+
+.no-results p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.back-to-home {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: lightcoral;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.back-to-home:hover {
+    background: rgb(233, 71, 71);
+}
+
+.dark-mode .search-product-card {
+    background: #474646;
+    color: #ecf0f1;
+}
+
+.dark-mode .search-product-title,
+.dark-mode .no-results p,
+.dark-mode .search-title,
+.dark-mode .search-product-description,
+.dark-mode .sort-select {
+    color: #ecf0f1;
+}
+
+.sort-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-label {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.sort-select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+    padding-right: 2rem;
+    min-width: 200px;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.dark-mode .sort-label {
+    color: #bdc3c7;
+}
