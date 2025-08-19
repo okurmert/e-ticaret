@@ -1,0 +1,199 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: var(--header-bg) !important;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 0 0 10px 10px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+}
+
+.logo-section:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.logo-section:hover .logo {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.logo-hover {
+    transform: rotate(15deg) scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(255, 127, 80, 0.3));
+}
+
+.logo-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, #ff7f50 0%, #ff4500 50%, #cb6b11 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.logo-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ff7f50 0%, #ff4500 50%, #cb6b11 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.logo-section:hover .logo-text::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 0.5rem 1rem;
+    padding-right: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    width: 250px;
+    outline: none;
+    transition: all 0.3s;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    padding: 10px;
+}
+
+.search-icon {
+    font-size: 16px;
+    color: #555;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 25px;
+    margin-right: 12px;
+    vertical-align: middle;
+
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.dark-mode .logo-text {
+    color: #fff;
+}
+
+.dark-mode .header-container {
+    background-color: #333;
+}
+
+#root {
+    height: 100vh;
+}
+
+.search-form {
+    position: relative;
+    margin-right: 20px;
+}
+
+.basket-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+}
+
+
+.account-btn {
+    background: linear-gradient(90deg, #ff7f7f 0%, #ffb199 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.15rem;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(233, 71, 71, 0.10);
+    cursor: pointer;
+    margin-left: 16px;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    letter-spacing: 0.5px;
+    outline: none;
+}
+
+.account-btn:hover {
+    background: linear-gradient(90deg, #ffb199 0%, #ff7f7f 100%);
+    box-shadow: 0 4px 16px rgba(233, 71, 71, 0.18);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.logout-btn {
+    background: #fff;
+    color: lightcoral;
+    font-weight: bold;
+    font-size: 1.05rem;
+    padding: 10px 24px;
+    border: 2px solid lightcoral;
+    border-radius: 8px;
+    margin-left: 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+    outline: none;
+}
+
+.logout-btn:hover {
+    background: lightcoral;
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px) scale(1.03);
+}
