@@ -24,7 +24,9 @@ function App() {
     dispatch(calculateBasket());
   };
 
-  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const user = localStorage.getItem('user') && localStorage.getItem('user') !== "undefined"
+    ? JSON.parse(localStorage.getItem('user'))
+    : null;
 
   return (
     <CartProvider user={user}>

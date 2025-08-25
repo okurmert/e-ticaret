@@ -6,6 +6,8 @@ import ProductDetail from '../components/ProductDetail';
 import Payment from '../pages/Payment';
 import Basket from '../components/Basket';
 import AccountDetails from '../pages/AccountDetails';
+import AdminAddProduct from '../pages/AdminAddProduct';
+import AdminProducts from '../pages/AdminProducts';
 
 const RouterConfig = () => (
 
@@ -18,6 +20,8 @@ const RouterConfig = () => (
         <Route path="/basket" element={<Basket />} />
         <Route path="/account" element={<AccountDetails />} />
         <Route path="/login" element={<LoginSignUp />} />
+        <Route path="/admin/add-product" element={<AdminAddProduct />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
     </Routes>
 
 );

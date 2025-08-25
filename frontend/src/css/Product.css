@@ -1,11 +1,11 @@
-.product-image {
+.p-product-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
-.product-card {
+.p-product-card {
     width: 230px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -16,13 +16,13 @@
     align-items: center;
 }
 
-.product-card:hover {
+.p-product-card:hover {
     box-shadow: 1px 4px 3px rgb(233, 71, 71);
     transition: all 0.5s;
     cursor: pointer;
 }
 
-.detail-button {
+.p-detail-button {
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -33,19 +33,19 @@
     margin-top: 10px;
 }
 
-.detail-button:hover {
+.p-detail-button:hover {
     cursor: pointer;
     background-color: rgb(233, 71, 71);
     transition: all 0.5s;
 }
 
-.product-title {
+.p-product-title {
     text-align: center;
     height: 50px;
     margin: 10px 0;
 }
 
-.product-price {
+.p-product-price {
     font-family: 'Poppins', sans-serif;
     margin: 0.5rem 0;
     display: flex;
@@ -55,14 +55,14 @@
     font-weight: bold;
 }
 
-.product-description {
+.p-product-description {
     color: #666;
     font-size: 0.9rem;
     margin: 0.5rem 0;
     text-align: center;
 }
 
-.product-list {
+.p-product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;

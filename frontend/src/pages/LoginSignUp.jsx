@@ -26,7 +26,7 @@ export default function LoginSignUp() {
             });
             const data = await res.json();
             if (res.ok) {
-                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('user', JSON.stringify(data));
                 setSuccess('Giriş başarılı!');
                 setError('');
                 navigate('/');
@@ -51,7 +51,7 @@ export default function LoginSignUp() {
             });
             const data = await res.json();
             if (res.ok) {
-                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('user', JSON.stringify(data));
                 setSuccess('Kayıt başarılı!');
                 setError('');
                 navigate('/');
@@ -121,7 +121,7 @@ export default function LoginSignUp() {
                             </div>
                             {error && <div className="error-message">{error}</div>}
                             {success && <div className="success-message">{success}</div>}
-                            <button type="submit" className="account-btn primary">GİRİŞ YAP</button>
+                            <button type="submit" className="login-signup-btn primary">GİRİŞ YAP</button>
 
                             <div className="divider">
                                 <span>veya</span>
@@ -175,7 +175,7 @@ export default function LoginSignUp() {
                             </div>
                             {error && <div className="error-message">{error}</div>}
                             {success && <div className="success-message">{success}</div>}
-                            <button type="submit" className="account-btn primary">ÜYE OL</button>
+                            <button type="submit" className="login-signup-btn primary">ÜYE OL</button>
 
                             <div className="terms">
                                 Üye olarak <a href="#">Kullanım Koşulları</a>'nı ve <a href="#">Gizlilik Politikası</a>'nı kabul etmiş olursunuz.

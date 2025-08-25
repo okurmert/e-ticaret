@@ -1,4 +1,4 @@
-.header-container {
+.h-header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,25 +11,24 @@
     border-radius: 0 0 10px 10px;
 }
 
-.logo-section {
+.h-logo-section {
     display: flex;
     align-items: center;
     gap: 15px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
 }
 
-.logo-section:hover {
+.h-logo-section:hover {
     transform: scale(1.03);
     opacity: 0.9;
 }
 
-.logo-section:hover .logo {
+.h-logo-section:hover .h-logo {
     transform: rotate(-5deg) scale(1.1);
 }
 
-.logo {
+.h-logo {
     width: 60px;
     height: 60px;
     object-fit: contain;
@@ -37,12 +36,12 @@
     transition: transform 0.3s ease;
 }
 
-.logo-hover {
+.h-logo:hover {
     transform: rotate(15deg) scale(1.1);
     filter: drop-shadow(0 4px 8px rgba(255, 127, 80, 0.3));
 }
 
-.logo-text {
+.h-logo-text {
     font-size: 2.2rem;
     font-weight: 800;
     margin: 0;
@@ -57,7 +56,7 @@
     padding-bottom: 5px;
 }
 
-.logo-text::after {
+.h-logo-text::after {
     content: '';
     position: absolute;
     left: 0;
@@ -69,18 +68,17 @@
     transition: transform 0.3s ease;
 }
 
-.logo-section:hover .logo-text::after {
+.h-logo-section:hover .h-logo-text::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-
-.search-input-container {
+.h-search-input-container {
     display: flex;
     align-items: center;
 }
 
-.search-input {
+.h-search-input {
     padding: 0.5rem 1rem;
     padding-right: 40px;
     border: 1px solid #e0e0e0;
@@ -92,12 +90,12 @@
     font-size: 14px;
 }
 
-.search-input:focus {
+.h-search-input:focus {
     border-color: #2575fc;
     box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
 }
 
-.search-button {
+.h-search-button {
     position: absolute;
     right: 10px;
     background: none;
@@ -107,45 +105,40 @@
     padding: 10px;
 }
 
-.search-icon {
+.h-search-icon {
     font-size: 16px;
     color: #555;
 }
 
-.icon-group {
+.h-icon-group {
     display: flex;
     align-items: center;
 }
 
-.icon {
+.h-icon {
     font-size: 25px;
     margin-right: 12px;
     vertical-align: middle;
-
 }
 
-.icon:hover {
+.h-icon:hover {
     cursor: pointer;
 }
 
-.dark-mode .logo-text {
+.dark-mode .h-logo-text {
     color: #fff;
 }
 
-.dark-mode .header-container {
+.dark-mode .h-header-container {
     background-color: #333;
 }
 
-#root {
-    height: 100vh;
-}
-
-.search-form {
+.h-search-form {
     position: relative;
-    margin-right: 20px;
+    margin-left: 10px;
 }
 
-.basket-icon-btn {
+.h-basket-icon-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -154,8 +147,7 @@
     align-items: center;
 }
 
-
-.account-btn {
+.h-account-btn {
     background: linear-gradient(90deg, #ff7f7f 0%, #ffb199 100%);
     color: #fff;
     font-weight: bold;
@@ -169,15 +161,16 @@
     transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
     letter-spacing: 0.5px;
     outline: none;
+    gap: 8px;
 }
 
-.account-btn:hover {
-    background: linear-gradient(90deg, #ffb199 0%, #ff7f7f 100%);
+.h-account-btn:hover {
+    background: blue;
     box-shadow: 0 4px 16px rgba(233, 71, 71, 0.18);
     transform: translateY(-2px) scale(1.03);
 }
 
-.logout-btn {
+.h-logout-btn {
     background: #fff;
     color: lightcoral;
     font-weight: bold;
@@ -191,9 +184,34 @@
     outline: none;
 }
 
-.logout-btn:hover {
+.h-logout-btn:hover {
     background: lightcoral;
     color: #fff;
     border-color: #fff;
+    transform: translateY(-2px) scale(1.03);
+}
+
+.h-admin-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+    background: linear-gradient(90deg, #ff7f7f 0%, #ffb199 100%);
+    font-weight: bold;
+    font-size: 1.15rem;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(233, 71, 71, 0.10);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: #fff;
+}
+
+.h-admin-btn:hover {
+    background: blue;
+    box-shadow: 0 4px 16px rgba(78, 84, 200, 0.18);
     transform: translateY(-2px) scale(1.03);
 }

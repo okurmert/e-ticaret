@@ -1,0 +1,170 @@
+.admin-add-product-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    color: #333;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.back-button {
+    background: #f0f0f0;
+    color: #555;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-button:hover {
+    background: #e0e0e0;
+}
+
+.admin-add-product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+}
+
+.add-product-card h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.8rem;
+}
+
+.admin-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-form-group label {
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.2s;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+    border-color: #4a6bdf;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 107, 223, 0.1);
+}
+
+.admin-form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.hint {
+    color: #666;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.admin-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.admin-submit-btn {
+    background: linear-gradient(135deg, #4a6bdf 0%, #3a56c7 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-submit-btn:hover {
+    background: linear-gradient(135deg, #3a56c7 0%, #2a46b7 100%);
+    transform: translateY(-1px);
+}
+
+.admin-submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cancel-btn {
+    background: #f5f5f5;
+    color: #555;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+.admin-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.admin-message.success {
+    background: #e6ffed;
+    color: #2d9d5f;
+    border: 1px solid #a0dab3;
+}
+
+.admin-message.error {
+    background: #fff0f0;
+    color: #e74c3c;
+    border: 1px solid #ffb8b8;
+}

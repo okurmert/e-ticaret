@@ -21,23 +21,23 @@ const Product = ({ products: propProducts }) => {
     if (!propProducts && error) return <div>Error: {error}</div>;
 
     return (
-        <div className="product-list" >
+        <div className="p-product-list" >
             {products && products.length > 0 ? (
                 products.map(product => (
-                    <div key={product._id} className="product-card" >
-                        <h3 className='product-title'>{product.title ? product.title.substring(0, 30) : "Başlık yok"}</h3>
+                    <div key={product._id} className="p-product-card" >
+                        <h3 className='p-product-title'>{product.title ? product.title.substring(0, 30) : "Başlık yok"}</h3>
                         <img
                             src={product.images && product.images.length > 0 ? product.images[0] : '/images/default.jpg'}
                             alt={product.title}
-                            className='product-image'
+                            className='p-product-image'
                         />
 
-                        <p className='product-price'>{product.price} ₺</p>
-                        <p className='product-description'>
+                        <p className='p-product-price'>{product.price} ₺</p>
+                        <p className='p-product-description'>
                             {product.description ? product.description.substring(0, 50) : "Açıklama yok"}...
                         </p>
                         <Link to={`/product-details/${product._id}`}>
-                            <button className='detail-button'>Detaylı İncele</button>
+                            <button className='p-detail-button'>Detaylı İncele</button>
                         </Link>
                     </div>
                 ))

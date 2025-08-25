@@ -1,4 +1,4 @@
-.account-details-container {
+.acc-d-account-details-container {
     max-width: 1000px;
     margin: 40px auto;
     padding: 30px;
@@ -8,28 +8,28 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.account-header {
+.acc-d-account-header {
     margin-bottom: 40px;
     padding-bottom: 20px;
     border-bottom: 1px solid #f0f0f0;
 }
 
-.account-header h2 {
+.acc-d-account-header h2 {
     font-size: 28px;
     color: #333;
     margin-bottom: 8px;
 }
 
-.welcome-message {
+.acc-d-welcome-message {
     font-size: 16px;
     color: #666;
 }
 
-.account-section {
+.acc-d-account-section {
     margin-bottom: 40px;
 }
 
-.section-title {
+.acc-d-section-title {
     font-size: 20px;
     color: #444;
     margin-bottom: 20px;
@@ -38,17 +38,17 @@
     gap: 10px;
 }
 
-.section-title i {
+.acc-d-section-title i {
     color: lightcoral;
 }
 
 /* sepet stilleri */
-.cart-items {
+.acc-d-cart-items {
     display: grid;
     gap: 15px;
 }
 
-.cart-item {
+.acc-d-cart-item {
     display: flex;
     align-items: center;
     padding: 15px;
@@ -57,12 +57,12 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.cart-item:hover {
+.acc-d-cart-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.product-image-placeholder {
+.acc-d-product-image-placeholder {
     width: 60px;
     height: 60px;
     background-color: #f0f0f0;
@@ -75,23 +75,23 @@
     overflow: hidden;
 }
 
-.product-image-placeholder img {
+.acc-d-product-image-placeholder img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.product-info {
+.acc-d-product-info {
     flex: 1;
 }
 
-.product-title {
+.acc-d-product-title {
     font-size: 16px;
     margin-bottom: 5px;
     color: #333;
 }
 
-.product-meta {
+.acc-d-product-meta {
     display: flex;
     gap: 15px;
     font-size: 14px;
@@ -99,24 +99,24 @@
 }
 
 /* sipariş geçmişi */
-.order-list {
+.acc-d-order-list {
     display: grid;
     gap: 20px;
 }
 
-.order-card {
+.acc-d-order-card {
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 20px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.order-card:hover {
+.acc-d-order-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.order-header {
+.acc-d-order-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -124,44 +124,44 @@
     border-bottom: 1px solid #f5f5f5;
 }
 
-.order-id {
+.acc-d-order-id {
     font-weight: 500;
     color: #555;
 }
 
-.order-date {
+.acc-d-order-date {
     color: #777;
     font-size: 14px;
 }
 
-.order-items-preview {
+.acc-d-order-items-preview {
     margin-bottom: 15px;
 }
 
-.order-item {
+.acc-d-order-item {
     display: flex;
     justify-content: space-between;
     padding: 8px 0;
     font-size: 14px;
 }
 
-.item-name {
+.acc-d-order-item-name {
     color: #444;
     flex: 1;
 }
 
-.item-quantity {
+.acc-d-order-item-quantity {
     color: #777;
     margin-left: 10px;
 }
 
-.more-items {
+.acc-d-more-items {
     color: #777;
     font-size: 13px;
     margin-top: 5px;
 }
 
-.order-footer {
+.acc-d-order-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -170,41 +170,41 @@
     margin-top: 10px;
 }
 
-.order-total {
+.acc-d-order-total {
     font-weight: 600;
     color: #333;
 }
 
-.order-status {
+.acc-d-order-status {
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 13px;
     font-weight: 500;
 }
 
-.order-status.processing {
+.acc-d-order-status.processing {
     background-color: #fff8e6;
     color: #e6a700;
 }
 
-.order-status.shipped {
+.acc-d-order-status.shipped {
     background-color: #e6f3ff;
     color: #0066cc;
 }
 
-.order-status.delivered {
+.acc-d-order-status.delivered {
     background-color: #e6f7ee;
     color: #00a76f;
 }
 
-.order-status.cancelled {
+.acc-d-order-status.cancelled {
     background-color: #ffebeb;
     color: #ff4d4f;
 }
 
 /* Boş Durum Stilleri */
-.empty-cart,
-.empty-orders {
+.acc-d-empty-cart,
+.acc-d-empty-orders {
     text-align: center;
     padding: 40px 20px;
     background-color: #fafafa;
@@ -212,13 +212,13 @@
     color: #666;
 }
 
-.empty-cart p,
-.empty-orders p {
+.acc-d-empty-cart p,
+.acc-d-empty-orders p {
     margin-bottom: 15px;
 }
 
-.shop-link,
-.login-redirect-btn {
+.acc-d-shop-link,
+.acc-d-login-redirect-btn {
     display: inline-block;
     padding: 10px 20px;
     background-color: lightcoral;
@@ -229,13 +229,13 @@
     transition: background-color 0.2s;
 }
 
-.shop-link:hover,
-.login-redirect-btn:hover {
+.acc-d-shop-link:hover,
+.acc-d-login-redirect-btn:hover {
     background-color: #e66767;
 }
 
 /* loading */
-.loading-spinner {
+.acc-d-loading-spinner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -244,7 +244,7 @@
 }
 
 /* giriş */
-.account-login-prompt {
+.acc-d-account-login-prompt {
     text-align: center;
     padding: 60px 20px;
     max-width: 500px;
@@ -254,23 +254,23 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.account-login-prompt h2 {
+.acc-d-account-login-prompt h2 {
     color: #333;
     margin-bottom: 15px;
 }
 
-.account-login-prompt p {
+.acc-d-account-login-prompt p {
     color: #666;
     margin-bottom: 25px;
 }
 
-.quantity-controls {
+.acc-d-quantity-controls {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.quantity-controls button {
+.acc-d-quantity-controls button {
     width: 24px;
     height: 24px;
     border: 1px solid #ddd;
@@ -279,12 +279,12 @@
     cursor: pointer;
 }
 
-.quantity-controls button:disabled {
+.acc-d-quantity-controls button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.remove-item {
+.acc-d-remove-item {
     background: #ffebee;
     color: #c62828;
     border: none;
@@ -295,11 +295,11 @@
     font-size: 14px;
 }
 
-.remove-item:hover {
+.acc-d-remove-item:hover {
     background: #ffcdd2;
 }
 
-.complete-order-btn {
+.acc-d-complete-order-btn {
     margin-top: 24px;
     padding: 12px 32px;
     background: linear-gradient(90deg, #ff7f7f 0%, #ffb199 100%);
@@ -311,4 +311,11 @@
     box-shadow: 0 2px 8px rgba(233, 71, 71, 0.10);
     cursor: pointer;
     transition: background 0.2s;
+}
+
+.acc-d-cart-total {
+    font-weight: 600;
+    color: #333;
+    margin-top: 12px;
+    font-size: 1.2rem;
 }

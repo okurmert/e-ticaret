@@ -77,33 +77,40 @@ export default function AccountDetails() {
         }
     };
 
+    const cartTotal = Array.isArray(cart)
+        ? cart.reduce((sum, item) => {
+            const price = typeof item.priceAtAddTime === 'number' ? item.priceAtAddTime : 0;
+            return sum + price * item.quantity;
+        }, 0)
+        : 0;
+
     if (!user) {
         return (
-            <div className="account-login-prompt">
+            <div className="acc-d-account-login-prompt">
                 <h2>Hesap Bilgileri</h2>
                 <p>Lütfen hesabınıza giriş yapınız.</p>
-                <a href="/login" className="login-redirect-btn">Giriş Yap</a>
+                <a href="/login" className="acc-d-login-redirect-btn">Giriş Yap</a>
             </div>
         );
     }
 
 
     return (
-        <div className="account-details-container">
-            <div className="account-header">
+        <div className="acc-d-account-details-container">
+            <div className="acc-d-account-header">
                 <h2>Hesabım</h2>
-                <p className="welcome-message">Hoş geldiniz, {user.name || user.email}</p>
+                <p className="acc-d-welcome-message">Hoş geldiniz, {user.name || user.email}</p>
             </div>
 
-            <div className="account-section">
-                <h3 className="section-title">
+            <div className="acc-d-account-section">
+                <h3 className="acc-d-section-title">
                     <i className="fas fa-shopping-cart"></i> Sepetiniz
                 </h3>
                 {Array.isArray(cart) && cart.length > 0 ? (
                     <>
                         {cart.map(item => (
-                            <div key={item.productId?._id || item.productId} className="cart-item">
-                                <div className="product-image-placeholder">
+                            <div key={item.productId?._id || item.productId} className="acc-d-cart-item">
+                                <div className="acc-d-product-image-placeholder">
                                     <img
                                         src={item.productId?.images?.[0] || '/images/default-product.jpg'}
                                         alt={item.productId?.title || 'Ürün'}
@@ -111,33 +118,33 @@ export default function AccountDetails() {
                                         onError={e => { e.target.src = '/images/default-product.jpg'; }}
                                     />
                                 </div>
-                                <div className="product-info">
-                                    <h4 className="product-title">
+                                <div className="acc-d-product-info">
+                                    <h4 className="acc-d-product-title">
                                         {item.title || item.productId?.title || `Ürün ID: ${item.productId?._id || 'Bilinmiyor'}`}
                                     </h4>
-                                    <div className="product-meta">
-                                        <div className="quantity-controls">
+                                    <div className="acc-d-product-meta">
+                                        <div className="acc-d-quantity-controls">
                                             <button
                                                 onClick={() => updateQuantity(item.productId?._id, item.quantity - 1)}
                                                 disabled={item.quantity <= 1}
                                             >
                                                 -
                                             </button>
-                                            <span className="product-quantity">{item.quantity}</span>
+                                            <span className="acc-d-product-quantity">{item.quantity}</span>
                                             <button
                                                 onClick={() => updateQuantity(item.productId?._id, item.quantity + 1)}
                                             >
                                                 +
                                             </button>
                                         </div>
-                                        <span className="product-price">
+                                        <span className="acc-d-product-price">
                                             {typeof item.priceAtAddTime === 'number'
                                                 ? (item.priceAtAddTime * item.quantity).toFixed(2)
                                                 : '--'} ₺
                                         </span>
                                     </div>
                                     <button
-                                        className="remove-item"
+                                        className="acc-d-remove-item"
                                         onClick={() => removeFromCart(item.productId?._id)}
                                     >
                                         <i className="fas fa-trash"></i> Kaldır
@@ -145,8 +152,11 @@ export default function AccountDetails() {
                                 </div>
                             </div>
                         ))}
+                        <div className="acc-d-cart-total">
+                            <strong>Toplam Tutar:</strong> {cartTotal.toFixed(2)} ₺
+                        </div>
                         <button
-                            className="complete-order-btn"
+                            className="acc-d-complete-order-btn"
                             onClick={() => navigate('/payment')}
                         >
                             Siparişi Tamamla
@@ -157,16 +167,16 @@ export default function AccountDetails() {
                 )}
             </div>
 
-            <div className="account-section">
-                <h3 className="section-title">
+            <div className="acc-d-account-section">
+                <h3 className="acc-d-section-title">
                     <i className="fas fa-history"></i> Sipariş Geçmişi
                 </h3>
                 {Array.isArray(orders) && orders.length > 0 ? (
                     orders.map(order => (
-                        <div key={order._id} className="order-card">
-                            <div className="order-header">
-                                <span className="order-id">Sipariş #: {order._id.substring(0, 8)}</span>
-                                <span className="order-date">
+                        <div key={order._id} className="acc-d-order-card">
+                            <div className="acc-d-order-header">
+                                <span className="acc-d-order-id">Sipariş #: {order._id.substring(0, 8)}</span>
+                                <span className="acc-d-order-date">
                                     {new Date(order.createdAt).toLocaleDateString('tr-TR', {
                                         day: 'numeric',
                                         month: 'long',
@@ -175,7 +185,7 @@ export default function AccountDetails() {
                                 </span>
                             </div>
 
-                            <div className="order-items-preview">
+                            <div className="acc-d-order-items-preview">
                                 <ul>
                                     {Array.isArray(order.items) && order.items.length > 0 ? (
                                         order.items.map(item => (
@@ -189,8 +199,8 @@ export default function AccountDetails() {
                                 </ul>
                             </div>
 
-                            <div className="order-footer">
-                                <span className="order-total">
+                            <div className="acc-d-order-footer">
+                                <span className="acc-d-order-total">
                                     {typeof order.total === 'number' ? order.total.toFixed(2) : '--'} ₺
                                 </span>
                                 <span className={`order-status ${(order.status || '').toLowerCase()}`}>

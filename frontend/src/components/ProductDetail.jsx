@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductById } from '../redux/slices/productSlice';
 import { addToBasket, calculateBasket } from '../redux/slices/basketSlice';
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
-import { FaShoppingCart, FaStar, FaRegStar, FaTruck, FaShieldAlt, FaExchangeAlt } from "react-icons/fa";
+import { FaShoppingCart, FaStar, FaRegStar, FaTruck, FaShieldAlt, FaExchangeAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import '../css/ProductDetail.css';
 
 function ProductDetail() {
@@ -12,6 +12,7 @@ function ProductDetail() {
     const { selectedProduct, loading, error } = useSelector((store) => store.product);
     const [count, setCount] = useState(1);
     const [mainImage, setMainImage] = useState('');
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -35,6 +36,27 @@ function ProductDetail() {
         if (count > 1) {
             setCount(count - 1);
         }
+    };
+
+    const nextImage = () => {
+        if (selectedProduct.images && selectedProduct.images.length > 0) {
+            const nextIndex = (currentImageIndex + 1) % selectedProduct.images.length;
+            setCurrentImageIndex(nextIndex);
+            setMainImage(selectedProduct.images[nextIndex]);
+        }
+    };
+
+    const prevImage = () => {
+        if (selectedProduct.images && selectedProduct.images.length > 0) {
+            const prevIndex = (currentImageIndex - 1 + selectedProduct.images.length) % selectedProduct.images.length;
+            setCurrentImageIndex(prevIndex);
+            setMainImage(selectedProduct.images[prevIndex]);
+        }
+    };
+
+    const selectImage = (img, index) => {
+        setMainImage(img);
+        setCurrentImageIndex(index);
     };
 
     const addBasket = async () => {
@@ -74,121 +96,153 @@ function ProductDetail() {
     const hasHalfStar = productRating % 1 >= 0.5;
 
     if (loading) return (
-        <div className="loading-container">
-            <div className="loading-spinner"></div>
+        <div className="pd-loading-container">
+            <div className="pd-loading-spinner"></div>
         </div>
     );
 
-    if (error) return <div className="error-message">Error: {error}</div>;
-    if (!selectedProduct || !selectedProduct._id) return <div className="not-found">Ürün bulunamadı.</div>;
+    if (error) return <div className="pd-error-message">Error: {error}</div>;
+    if (!selectedProduct || !selectedProduct._id) return <div className="pd-not-found">Ürün bulunamadı.</div>;
 
     return (
-        <div className="product-detail-container">
-            <div className="product-gallery">
-                <div className="main-image-container">
+        <div className="pd-product-detail-container">
+            {/* Ürün Galerisi Bölümü - Güncellenmiş */}
+            <div className="pd-product-gallery">
+                <div className="pd-main-image-container">
                     <img
                         src={mainImage || '/images/default.jpg'}
                         alt={selectedProduct.title}
-                        className="main-image"
+                        className="pd-main-image"
                     />
+
+                    {/* Navigasyon okları (birden fazla resim varsa) */}
+                    {selectedProduct.images && selectedProduct.images.length > 1 && (
+                        <>
+                            <button
+                                className="pd-nav-button pd-prev-button"
+                                onClick={prevImage}
+                            >
+                                <FaChevronLeft />
+                            </button>
+                            <button
+                                className="pd-nav-button pd-next-button"
+                                onClick={nextImage}
+                            >
+                                <FaChevronRight />
+                            </button>
+                        </>
+                    )}
+
+                    {/* Resim sayacı */}
+                    {selectedProduct.images && selectedProduct.images.length > 1 && (
+                        <div className="pd-image-counter">
+                            {currentImageIndex + 1} / {selectedProduct.images.length}
+                        </div>
+                    )}
                 </div>
-                <div className="thumbnail-container">
-                    {selectedProduct.images && selectedProduct.images.map((img, idx) => (
-                        <img
-                            key={idx}
-                            src={img}
-                            alt={`${selectedProduct.title} ${idx + 1}`}
-                            className={`thumbnail${mainImage === img ? ' active' : ''}`}
-                            onClick={() => setMainImage(img)}
-                            style={{ cursor: 'pointer' }}
-                        />
-                    ))}
-                </div>
+
+                {/* Küçük resimler (thumbnails) */}
+                {selectedProduct.images && selectedProduct.images.length > 1 && (
+                    <div className="pd-thumbnail-container">
+                        {selectedProduct.images.map((img, index) => (
+                            <div
+                                key={index}
+                                className={`pd-thumbnail-item ${mainImage === img ? 'pd-active' : ''}`}
+                                onClick={() => selectImage(img, index)}
+                            >
+                                <img
+                                    src={img}
+                                    alt={`${selectedProduct.title} ${index + 1}`}
+                                    className="pd-thumbnail-image"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {/* Ürün Bilgileri Bölümü */}
-            <div className="product-info">
-                <div className="product-header">
-                    <h1 className="product-title">{selectedProduct.title}</h1>
-                    <div className="product-rating">
+            <div className="pd-product-info">
+                <div className="pd-product-header">
+                    <h1 className="pd-product-detail-title">{selectedProduct.title}</h1>
+                    <div className="pd-product-rating">
                         {[...Array(5)].map((_, i) => (
                             i < fullStars ?
-                                <FaStar key={i} className="star filled" /> :
+                                <FaStar key={i} className="pd-star filled" /> :
                                 (hasHalfStar && i === fullStars ?
-                                    <FaStar key={i} className="star half" /> :
-                                    <FaRegStar key={i} className="star" />
+                                    <FaStar key={i} className="pd-star half" /> :
+                                    <FaRegStar key={i} className="pd-star" />
                                 )
                         ))}
-                        <span className="rating-text">({productRating})</span>
+                        <span className="pd-rating-text">({productRating})</span>
                     </div>
                 </div>
 
-                <p className="product-category">{selectedProduct.category?.name || selectedProduct.category}</p>
-                <p className="product-brand">Marka: {selectedProduct.brand}</p>
-                <p className="product-sku">SKU: {selectedProduct.sku}</p>
+                <p className="pd-product-brand">Marka: {selectedProduct.brand}</p>
+                <p className="pd-product-sku">SKU: {selectedProduct.sku}</p>
 
-                <p className="product-description">{selectedProduct.description}</p>
+                <p className="pd-product-description">{selectedProduct.description}</p>
 
-                <div className="price-container">
-                    <span className="current-price">{selectedProduct.price.toFixed(2)}₺</span>
+                <div className="pd-price-container">
+                    <span className="pd-current-price">{selectedProduct.price.toFixed(2)}₺</span>
                     {selectedProduct.originalPrice && (
-                        <span className="original-price">{selectedProduct.originalPrice.toFixed(2)}₺</span>
+                        <span className="pd-original-price">{selectedProduct.originalPrice.toFixed(2)}₺</span>
                     )}
                     {selectedProduct.discountPercentage && (
-                        <span className="discount-badge">%{selectedProduct.discountPercentage} İNDİRİM</span>
+                        <span className="pd-discount-badge">%{selectedProduct.discountPercentage} İNDİRİM</span>
                     )}
                 </div>
 
-                <div className="stock-info">
+                <div className="pd-stock-info">
                     {selectedProduct.stock > 0 ? (
-                        <span className="in-stock">Stokta: {selectedProduct.stock} adet</span>
+                        <span className="pd-in-stock">Stokta: {selectedProduct.stock} adet</span>
                     ) : (
-                        <span className="out-of-stock">Stokta Yok</span>
+                        <span className="pd-out-of-stock">Stokta Yok</span>
                     )}
                 </div>
 
                 {selectedProduct.variants?.length > 0 && (
-                    <div className="product-variants">
+                    <div className="pd-product-variants">
                         <h4>Varyant Seçenekleri</h4>
-                        <div className="variant-options">
+                        <div className="pd-variant-options">
                             {selectedProduct.variants.map((variant, idx) => (
-                                <div key={idx} className="variant-item">
-                                    <div className="variant-row">
-                                        <span className="variant-label">Renk:</span>
-                                        <span className="variant-value">{variant.color}</span>
+                                <div key={idx} className="pd-variant-item">
+                                    <div className="pd-variant-row">
+                                        <span className="pd-variant-label">Renk:</span>
+                                        <span className="pd-variant-value">{variant.color}</span>
                                     </div>
-                                    <div className="variant-row">
-                                        <span className="variant-label">Beden:</span>
-                                        <span className="variant-value">{variant.size}</span>
+                                    <div className="pd-variant-row">
+                                        <span className="pd-variant-label">Beden:</span>
+                                        <span className="pd-variant-value">{variant.size}</span>
                                     </div>
-                                    <div className="variant-row">
-                                        <span className="variant-label">Fiyat:</span>
-                                        <span className="variant-value">{variant.price}₺</span>
+                                    <div className="pd-variant-row">
+                                        <span className="pd-variant-label">Fiyat:</span>
+                                        <span className="pd-variant-value">{variant.price}₺</span>
                                     </div>
-                                    <div className="variant-row">
-                                        <span className="variant-label">Stok:</span>
-                                        <span className="variant-value">{variant.stock} adet</span>
+                                    <div className="pd-variant-row">
+                                        <span className="pd-variant-label">Stok:</span>
+                                        <span className="pd-variant-value">{variant.stock} adet</span>
                                     </div>
-                                    <div className="variant-separator"></div>
+                                    <div className="pd-variant-separator"></div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 )}
 
-                <div className="quantity-control">
+                <div className="pd-quantity-control">
                     <button
                         onClick={decrement}
                         disabled={count <= 1}
-                        className="quantity-btn"
+                        className="pd-quantity-btn"
                     >
                         <CiCircleMinus />
                     </button>
-                    <span className="quantity">{count}</span>
+                    <span className="pd-quantity">{count}</span>
                     <button
                         onClick={increment}
                         disabled={count >= selectedProduct.stock}
-                        className="quantity-btn"
+                        className="pd-quantity-btn"
                     >
                         <CiCirclePlus />
                     </button>
@@ -197,44 +251,44 @@ function ProductDetail() {
                 <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
                     <button
                         onClick={addBasket}
-                        className="add-to-cart-btn"
+                        className="pd-add-to-cart-btn"
                         disabled={selectedProduct.stock <= 0}
                     >
-                        <FaShoppingCart className="cart-icon" />
+                        <FaShoppingCart className="pd-cart-icon" />
                         Sepete Ekle
                     </button>
                     <button
                         onClick={() => navigate('/payment')}
-                        className="add-to-cart-btn"
+                        className="pd-add-to-cart-btn"
                         disabled={selectedProduct.stock <= 0}
                     >
                         Satın Al
                     </button>
                 </div>
 
-                <div className="delivery-info">
-                    <div className="delivery-item">
-                        <FaTruck className="delivery-icon" />
+                <div className="pd-delivery-info">
+                    <div className="pd-delivery-item">
+                        <FaTruck className="pd-delivery-icon" />
                         <span>Ücretsiz Kargo</span>
                     </div>
-                    <div className="delivery-item">
-                        <FaShieldAlt className="delivery-icon" />
+                    <div className="pd-delivery-item">
+                        <FaShieldAlt className="pd-delivery-icon" />
                         <span>2 Yıl Garanti</span>
                     </div>
-                    <div className="delivery-item">
-                        <FaExchangeAlt className="delivery-icon" />
+                    <div className="pd-delivery-item">
+                        <FaExchangeAlt className="pd-delivery-icon" />
                         <span>14 Gün İade</span>
                     </div>
                 </div>
 
                 {selectedProduct.specifications && (
-                    <div className="product-specs">
+                    <div className="pd-product-specs">
                         <h4>Teknik Özellikler</h4>
-                        <ul className="specs-list">
+                        <ul className="pd-specs-list">
                             {Object.entries(selectedProduct.specifications).map(([key, value]) => (
                                 <li key={key}>
-                                    <span className="spec-key">{key}:</span>
-                                    <span className="spec-value">{value}</span>
+                                    <span className="pd-spec-key">{key}:</span>
+                                    <span className="pd-spec-value">{value}</span>
                                 </li>
                             ))}
                         </ul>

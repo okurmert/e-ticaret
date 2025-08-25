@@ -44,9 +44,14 @@ router.post('/login', async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ error: 'E-posta veya şifre yanlış' });
 
-        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
+        const token = jwt.sign({ id: user._id, email: user.email, isAdmin: user.isAdmin }, JWT_SECRET, { expiresIn: '1d' });
         setTokenCookie(res, token);
-        res.json({ user: { id: user._id, name: user.name, email: user.email } });
+        res.json({
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin
+        });
     } catch (err) {
         res.status(500).json({ error: 'Login failed' });
     }
@@ -59,3 +64,8 @@ router.post('/logout', (req, res) => {
 });
 
 export default router;
+
+export function isAdmin(req, res, next) {
+    if (req.user && req.user.isAdmin) return next();
+    return res.status(403).json({ message: 'Access denied' });
+}

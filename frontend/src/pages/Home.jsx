@@ -6,6 +6,7 @@ const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [products, setProducts] = useState([]);
     const [sortBy, setSortBy] = useState('default');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetch('/api/categories')
@@ -14,14 +15,24 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        let url = '/api/products';
-        if (selectedCategory) {
-            url += `?category=${encodeURIComponent(selectedCategory)}`;
-        }
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, [selectedCategory]);
+        const fetchProducts = async () => {
+            try {
+                const res = await fetch('/api/products');
+                if (!res.ok) throw new Error('Ürün getirme hatası: ' + res.status);
+                const data = await res.json();
+                setProducts(Array.isArray(data) ? data : []);
+            } catch (err) {
+                setError(err.message);
+            }
+        };
+        fetchProducts();
+    }, []);
+
+    const fetchProducts = async (categoryName) => {
+        const res = await fetch(`/api/products?category=${encodeURIComponent(categoryName)}`);
+        const data = await res.json();
+        setProducts(data);
+    };
 
     const sortedProducts = [...products].sort((a, b) => {
         if (sortBy === 'price-asc') return a.price - b.price;
@@ -32,6 +43,8 @@ const Home = () => {
         if (sortBy === 'stock-asc') return a.stock - b.stock;
         return 0;
     });
+
+    if (error) return <div>{error}</div>;
 
     return (
         <div>
@@ -50,7 +63,10 @@ const Home = () => {
                             cursor: 'pointer',
                             transition: 'all 0.2s'
                         }}
-                        onClick={() => setSelectedCategory('')}
+                        onClick={() => {
+                            setSelectedCategory('');
+                            fetchProducts('');
+                        }}
                     >
                         Tümü
                     </button>
@@ -68,7 +84,10 @@ const Home = () => {
                                 cursor: 'pointer',
                                 transition: 'all 0.2s'
                             }}
-                            onClick={() => setSelectedCategory(cat.name)}
+                            onClick={() => {
+                                setSelectedCategory(cat.name);
+                                fetchProducts(cat.name);
+                            }}
                         >
                             {cat.name}
                         </button>

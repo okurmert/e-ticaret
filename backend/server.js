@@ -42,7 +42,11 @@ app.use('/api/orders', ordersRouter);
 import cartRouter from './routes/cart.js';
 app.use('/api/cart', cartRouter);
 
-const PORT = 5000;
+// Register admin products route
+import adminProductsRouter from './routes/adminProducts.js';
+app.use('/api/admin/products', adminProductsRouter);
+
+const PORT = 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 export default app;
