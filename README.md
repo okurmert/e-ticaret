@@ -192,6 +192,10 @@ POST /api/orders - Sipariş oluştur
 
 ## 📸 Ekran Görselleri
 
+<img width="1063" height="899" alt="Screenshot_15" src="https://github.com/user-attachments/assets/4ac756d6-8011-48f5-889a-2894d36d11f2" />
+<img width="1051" height="923" alt="Screenshot_14" src="https://github.com/user-attachments/assets/9763ef06-d44c-4f8d-a516-4b65cdd59056" />
+<img width="1039" height="877" alt="Screenshot_13" src="https://github.com/user-attachments/assets/ba5bf700-f5af-4ef7-8534-9c70a7982798" />
+<img width="1056" height="894" alt="Screenshot_12" src="https://github.com/user-attachments/assets/dc04683b-fec0-42da-9d9e-fe3ccb86a496" />
 
 
 
